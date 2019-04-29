@@ -3,10 +3,10 @@ package test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPServer {
 
@@ -20,10 +20,11 @@ public class TCPServer {
 			
 			//2. 바인딩(binding)
 			//	 : Socket에 SocketAddress(IPAddress + Port)를 바인딩 한다.
-			InetAddress inetAddress 	= InetAddress.getLocalHost();
+			
+//			InetAddress inetAddress 	= InetAddress.getLocalHost();
 //			String localHost 			= inetAddress.getHostAddress();
-			ss.bind(new InetSocketAddress("0.0.0.0", 5001));
 //			ss.bind(new InetSocketAddress(inetAddress, 5000));
+			ss.bind(new InetSocketAddress("0.0.0.0", 5001)); //"0.0.0.0" 이였다가 클라이언트가 찌를 때 ip가 바뀐다.
 			
 			//3. accept
 			//	 : 클라이언트의 연결요청을 기다림.
@@ -64,6 +65,8 @@ public class TCPServer {
 					os.write(data.getBytes("utf-8"));
 				}
 			
+			} catch(SocketException e) {
+				System.out.println("[server] sudden closed by client");
 			} catch(IOException e) {
 				e.printStackTrace();
 			} finally {
