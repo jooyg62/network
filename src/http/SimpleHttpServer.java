@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SimpleHttpServer {
-	private static final int PORT = 8888;
+	private static final int PORT = 8080;
 
 	public static void main(String[] args) {
 
@@ -15,7 +15,7 @@ public class SimpleHttpServer {
 		try {
 			// 1. Create Server Socket
 			serverSocket = new ServerSocket();
-			   
+
 			// 2. Bind
 //			String localhost = InetAddress.getLocalHost().getHostAddress();
 			serverSocket.bind( new InetSocketAddress( "0.0.0.0", PORT ) );
