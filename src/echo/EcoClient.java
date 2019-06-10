@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class EcoClient {
 	
-	private static final String SERVER_IP 	= 	"192.168.1.9"; 
+	private static final String SERVER_IP 	= 	"192.168.1.104"; 
 	private static final int 	SERVER_PORT = 	7000; 
 
 	public static void main(String[] args) {
